@@ -1,36 +1,20 @@
-// Оптимизированная версия скрипта для плавной работы
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы интерфейса
     const screens = document.querySelectorAll('.screen');
     const buttons = document.querySelectorAll('[data-target]');
     const backButtons = document.querySelectorAll('.back-button');
     
-    // Переключение экранов (оптимизировано)
     function switchScreen(screenId) {
-        // Скрыть все экраны
         screens.forEach(screen => {
-            screen.style.display = 'none';
             screen.classList.remove('active');
         });
         
-        // Показать целевой экран
         const targetScreen = document.getElementById(screenId);
         if (targetScreen) {
-            targetScreen.style.display = 'flex';
-            // Небольшая задержка для плавности
-            requestAnimationFrame(() => {
-                targetScreen.classList.add('active');
-            });
-            
-            // Плавная прокрутка к верху
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            targetScreen.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
     
-    // Обработчики для кнопок навигации
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             const target = this.getAttribute('data-target');
@@ -38,85 +22,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Обработчики для кнопок "Назад"
     backButtons.forEach(button => {
         button.addEventListener('click', function() {
             switchScreen('main');
         });
     });
     
-    // Плавный скролл для подсказки
     const scrollHint = document.querySelector('.scroll-hint');
     if (scrollHint) {
         scrollHint.addEventListener('click', function() {
-            const projectsScreen = document.getElementById('projects');
-            if (projectsScreen) {
-                projectsScreen.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+            document.getElementById('projects').scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     }
     
-    // Анимация текста с градиентом (упрощенная)
-    const nicknameElement = document.querySelector('.nickname');
-    if (nicknameElement) {
-        // Используем CSS анимацию вместо requestAnimationFrame для производительности
-        nicknameElement.style.animation = 'gradientText 6s ease infinite';
-    }
-    
-    // Простая оптимизация - отключаем тяжелые анимации при потере фокуса
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            // При скрытии вкладки можно приостановить анимации
-            document.body.style.animationPlayState = 'paused';
-        } else {
-            document.body.style.animationPlayState = 'running';
-        }
-    });
-    
-    // Оптимизация для мобильных устройств
-    function optimizeForMobile() {
-        const isMobile = window.innerWidth <= 768;
+    // Простые частицы для фона
+    function createSimpleParticles() {
+        const bg = document.querySelector('.bg-details');
+        if (!bg) return;
         
-        if (isMobile) {
-            // Упрощаем анимации на мобильных
-            const animatedElements = document.querySelectorAll('*[style*="animation"], *[style*="transition"]');
-            animatedElements.forEach(el => {
-                // Сохраняем только важные анимации
-                if (!el.classList.contains('btn') && 
-                    !el.classList.contains('link-card') && 
-                    !el.classList.contains('christ-figure')) {
-                    el.style.animation = 'none';
-                    el.style.transition = 'none';
-                }
-            });
-        }
-    }
-    
-    // Вызываем оптимизацию при загрузке и ресайзе
-    optimizeForMobile();
-    window.addEventListener('resize', optimizeForMobile);
-    
-    // Простая проверка производительности
-    let lastTime = 0;
-    function checkPerformance() {
-        const now = performance.now();
-        const delta = now - lastTime;
-        
-        if (delta > 100) { // Если кадры идут медленнее 10fps
-            console.log('Производительность низкая, упрощаем анимации');
-            // Можно отключить некоторые эффекты
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 3 + 1 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = 'rgba(255, 215, 0, 0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.zIndex = '-1';
+            particle.style.animation = `floatSimple ${Math.random() * 20 + 10}s linear infinite`;
+            bg.appendChild(particle);
         }
         
-        lastTime = now;
-        if (document.hasFocus()) {
-            requestAnimationFrame(checkPerformance);
-        }
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatSimple {
+                0% { transform: translateY(0) translateX(0); opacity: 0; }
+                10% { opacity: 0.5; }
+                90% { opacity: 0.5; }
+                100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     }
     
-    // Запускаем проверку производительности только если страница видима
-    if (!document.hidden) {
-        requestAnimationFrame(checkPerformance);
-    }
+    createSimpleParticles();
 });
