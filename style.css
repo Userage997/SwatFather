@@ -316,13 +316,13 @@ body {
 }
 
 /* Фигура Иисуса с ником - УВЕЛИЧИВАЕМ ЕЩЕ НА 60% */
-.christ-figure {
-    position: relative;
-    margin-bottom: 80px;
-    animation: float 8s ease-in-out infinite;
-    transform: scale(2.1); /* Было 1.3, увеличили на 60% */
-    z-index: 2;
-}
+    .christ-figure {
+        position: relative;
+        margin-bottom: 80px;
+        animation: float 8s ease-in-out infinite;
+        transform: scale(2.1);
+        z-index: 2;
+        }
 
 @keyframes float {
     0%, 100% { transform: scale(2.1) translateY(0) rotate(0deg); }
@@ -1114,14 +1114,14 @@ footer {
 /* Адаптивность для увеличенной фигуры (2.1) */
 @media (max-width: 1200px) {
     .christ-figure {
-        transform: scale(1.7);
+        transform: scale(0.85);
     }
     
     @keyframes float {
-        0%, 100% { transform: scale(1.7) translateY(0) rotate(0deg); }
-        25% { transform: scale(1.7) translateY(-25px) rotate(1deg); }
-        50% { transform: scale(1.7) translateY(0) rotate(0deg); }
-        75% { transform: scale(1.7) translateY(-12px) rotate(-1deg); }
+        0%, 100% { transform: scale(0.85) translateY(0) rotate(0deg); }
+        25% { transform: scale(0.85) translateY(-25px) rotate(1deg); }
+        50% { transform: scale(0.85) translateY(0) rotate(0deg); }
+        75% { transform: scale(0.85) translateY(-12px) rotate(-1deg); }
     }
     
     .hands {
@@ -1145,14 +1145,14 @@ footer {
 
 @media (max-width: 992px) {
     .christ-figure {
-        transform: scale(1.3);
+        transform: scale(0.7);
     }
     
     @keyframes float {
-        0%, 100% { transform: scale(1.3) translateY(0) rotate(0deg); }
-        25% { transform: scale(1.3) translateY(-20px) rotate(1deg); }
-        50% { transform: scale(1.3) translateY(0) rotate(0deg); }
-        75% { transform: scale(1.3) translateY(-10px) rotate(-1deg); }
+        0%, 100% { transform: scale(0.7) translateY(0) rotate(0deg); }
+        25% { transform: scale(0.7) translateY(-20px) rotate(1deg); }
+        50% { transform: scale(0.7) translateY(0) rotate(0deg); }
+        75% { transform: scale(0.7) translateY(-10px) rotate(-1deg); }
     }
     
     .hands {
@@ -1195,14 +1195,14 @@ footer {
 
 @media (max-width: 768px) {
     .christ-figure {
-        transform: scale(1);
+        transform: scale(0.55);
     }
     
     @keyframes float {
-        0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
-        25% { transform: scale(1) translateY(-15px) rotate(1deg); }
-        50% { transform: scale(1) translateY(0) rotate(0deg); }
-        75% { transform: scale(1) translateY(-8px) rotate(-1deg); }
+        0%, 100% { transform: scale(0.55) translateY(0) rotate(0deg); }
+        25% { transform: scale(0.55) translateY(-15px) rotate(1deg); }
+        50% { transform: scale(0.55) translateY(0) rotate(0deg); }
+        75% { transform: scale(0.55) translateY(-8px) rotate(-1deg); }
     }
     
     .hands {
@@ -1285,10 +1285,10 @@ footer {
     }
     
     @keyframes float {
-        0%, 100% { transform: scale(0.8) translateY(0) rotate(0deg); }
-        25% { transform: scale(0.8) translateY(-10px) rotate(1deg); }
-        50% { transform: scale(0.8) translateY(0) rotate(0deg); }
-        75% { transform: scale(0.8) translateY(-5px) rotate(-1deg); }
+        0%, 100% { transform: scale(0.45) translateY(0) rotate(0deg); }
+        25% { transform: scale(0.45) translateY(-10px) rotate(1deg); }
+        50% { transform: scale(0.45) translateY(0) rotate(0deg); }
+        75% { transform: scale(0.45) translateY(-5px) rotate(-1deg); }
     }
     
     .hands {
