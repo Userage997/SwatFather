@@ -1,0 +1,565 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #f0f0f0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Анимированный фон */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #0a0a1a, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Экраны */
+.screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.screen.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+}
+
+/* Фигура Иисуса с ником */
+.christ-figure {
+    position: relative;
+    margin-bottom: 40px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.halo {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    animation: haloGlow 4s ease-in-out infinite;
+}
+
+@keyframes haloGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+    50% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6); }
+}
+
+.halo i {
+    font-size: 40px;
+    color: gold;
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hands {
+    position: relative;
+    width: 400px;
+    height: 200px;
+}
+
+.hands::before, .hands::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    top: 50%;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.hands::before {
+    left: 0;
+    transform: rotate(-15deg);
+}
+
+.hands::after {
+    right: 0;
+    transform: rotate(15deg);
+}
+
+/* Карточка с ником */
+.nickname-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(20, 20, 40, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 3;
+    text-align: center;
+    min-width: 320px;
+    animation: cardGlow 3s ease-in-out infinite;
+}
+
+@keyframes cardGlow {
+    0%, 100% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                           inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                           0 0 20px rgba(255, 215, 0, 0.1); }
+    50% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                      0 0 40px rgba(255, 215, 0, 0.3); }
+}
+
+.nickname {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.username {
+    font-size: 1.5rem;
+    color: #8ab4f8;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.username i {
+    margin-right: 10px;
+    color: #0088cc;
+}
+
+/* Подзаголовок */
+.subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Кнопки */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.btn {
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.btn i {
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #0f3460, #16213e);
+    color: white;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.btn-telegram {
+    background: linear-gradient(45deg, #0088cc, #34b7f1);
+    color: white;
+}
+
+.btn-telegram:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
+}
+
+/* Подсказка скролла */
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* Кнопка назад */
+.back-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.back-button:hover {
+    color: gold;
+}
+
+/* Заголовки разделов */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: gold;
+}
+
+.section-header h2 i {
+    margin-right: 15px;
+}
+
+.header-decoration {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, gold, transparent);
+    margin: 0 auto;
+}
+
+/* Карточка проекта */
+.project-card {
+    background: rgba(20, 20, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #0f3460, #16213e);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: gold;
+    flex-shrink: 0;
+}
+
+.project-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.project-content p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #34b7f1;
+    text-decoration: none;
+    font-weight: 700;
+    transition: gap 0.3s;
+}
+
+.project-link:hover {
+    gap: 12px;
+}
+
+/* Скоро появится */
+.coming-soon {
+    text-align: center;
+    color: #666;
+    margin-top: 40px;
+}
+
+.pulse-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pulse-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: gold;
+    animation: pulse 1.5s infinite;
+}
+
+.pulse-dots span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.pulse-dots span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Сетка ссылок */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.link-card {
+    background: rgba(20, 20, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.link-card.coming-soon-link {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.link-card.coming-soon-link:hover {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.link-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.link-icon.telegram {
+    background: linear-gradient(45deg, #0088cc, #34b7f1);
+}
+
+.link-icon.community {
+    background: linear-gradient(45deg, #0f3460, #16213e);
+}
+
+.link-icon.soon {
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+}
+
+.link-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.link-info p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Цитата */
+.quote {
+    max-width: 600px;
+    text-align: center;
+    font-style: italic;
+    padding: 25px;
+    border-left: 3px solid gold;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 0 10px 10px 0;
+}
+
+.quote p {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.quote span {
+    color: gold;
+    font-size: 1rem;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hands {
+        width: 300px;
+    }
+    
+    .nickname-card {
+        min-width: 280px;
+        padding: 20px 30px;
+    }
+    
+    .nickname {
+        font-size: 2.5rem;
+    }
+    
+    .username {
+        font-size: 1.2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .project-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+}
