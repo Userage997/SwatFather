@@ -1,4 +1,3 @@
-/* Базовые стили */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +13,6 @@ body {
     position: relative;
 }
 
-/* Анимированный фон */
 .animated-bg {
     position: fixed;
     top: 0;
@@ -34,7 +32,6 @@ body {
     100% { opacity: 0.7; }
 }
 
-/* Символы на фоне */
 .bg-details {
     position: fixed;
     top: 0;
@@ -80,7 +77,6 @@ body {
     }
 }
 
-/* Контейнер */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -89,7 +85,6 @@ body {
     z-index: 1;
 }
 
-/* Экранная система */
 .screen {
     display: none;
     min-height: 90vh;
@@ -106,7 +101,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Главный экран */
 .christ-figure {
     position: relative;
     height: 300px;
@@ -144,7 +138,6 @@ body {
     z-index: 2;
 }
 
-/* Карточка с ником */
 .nickname-card {
     position: absolute;
     top: 50%;
@@ -198,7 +191,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* Фреймы для текста */
 .subtitle-frame {
     text-align: center;
     margin: 30px auto;
@@ -236,7 +228,6 @@ body {
     margin-right: 10px;
 }
 
-/* Кнопки */
 .cta-buttons {
     display: flex;
     justify-content: center;
@@ -289,7 +280,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* Карточка проекта */
 .project-card {
     display: flex;
     align-items: center;
@@ -364,7 +354,6 @@ body {
     margin-left: 8px;
 }
 
-/* Скоро появятся */
 .coming-soon-frame {
     text-align: center;
     margin: 40px auto;
@@ -404,7 +393,6 @@ body {
     50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Сетка ссылок */
 .links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -488,7 +476,6 @@ body {
     border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-/* Цитата */
 .quote-frame {
     max-width: 600px;
     margin: 50px auto;
@@ -514,7 +501,6 @@ body {
     font-size: 1rem;
 }
 
-/* Кнопка "Назад" */
 .back-button {
     display: inline-flex;
     align-items: center;
@@ -535,7 +521,6 @@ body {
     transform: translateX(-5px);
 }
 
-/* Подсказка скролла */
 .scroll-hint {
     position: absolute;
     bottom: 30px;
@@ -553,7 +538,6 @@ body {
     60% { transform: translateX(-50%) translateY(-5px); }
 }
 
-/* Футер */
 footer {
     text-align: center;
     padding: 30px 20px;
@@ -565,7 +549,6 @@ footer {
     margin-top: 50px;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .nickname {
         font-size: 2rem;
