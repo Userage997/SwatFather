@@ -333,11 +333,11 @@ body {
 
 .halo {
     position: absolute;
-    top: -100px;
+    top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     background: radial-gradient(circle, rgba(255,215,0,0.5) 0%, rgba(255,215,0,0) 70%);
     border-radius: 50%;
     display: flex;
@@ -349,8 +349,8 @@ body {
 
 .halo-inner {
     position: absolute;
-    width: 140px;
-    height: 140px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     border: 3px solid rgba(255, 215, 0, 0.6);
     animation: haloSpin 15s linear infinite reverse;
@@ -358,8 +358,8 @@ body {
 
 .halo-outer {
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 2px solid rgba(255, 215, 0, 0.3);
     animation: haloSpin 20s linear infinite;
@@ -384,7 +384,7 @@ body {
 }
 
 .halo i {
-    font-size: 80px;
+    font-size: 50px;
     color: gold;
     animation: spin 25s linear infinite;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
@@ -395,17 +395,18 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+/* Уменьшаем размеры пропорционально */
 .hands {
     position: relative;
-    width: 650px;
-    height: 325px;
+    width: 350px; /* Было 650px */
+    height: 175px; /* Было 325px */
 }
 
 .hands::before, .hands::after {
     content: '';
     position: absolute;
-    width: 200px;
-    height: 100px;
+    width: 100px;
+    height: 50px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     top: 50%;
