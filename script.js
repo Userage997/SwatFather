@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('[data-target]');
     const backButtons = document.querySelectorAll('.back-button');
     
-    // Функция переключения экранов
     function switchScreen(screenId) {
         screens.forEach(screen => {
             screen.classList.remove('active');
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Обработчики для кнопок навигации
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             const target = this.getAttribute('data-target');
@@ -24,14 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Обработчики для кнопок "Назад"
     backButtons.forEach(button => {
         button.addEventListener('click', function() {
             switchScreen('main');
         });
     });
     
-    // Подсказка скролла
+
     const scrollHint = document.querySelector('.scroll-hint');
     if (scrollHint) {
         scrollHint.addEventListener('click', function() {
@@ -39,28 +36,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Создание анимированных частиц
     function createParticles() {
         const bg = document.querySelector('.bg-details');
         if (!bg) return;
         
-        // Удаляем старые частицы если есть
         const oldParticles = document.querySelectorAll('.particle');
         oldParticles.forEach(p => p.remove());
         
-        // Создаем новые частицы
         for (let i = 0; i < 40; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             
-            // Случайные параметры
             const size = Math.random() * 4 + 1;
             const posX = Math.random() * 100;
             const posY = Math.random() * 100;
             const delay = Math.random() * 10;
             const duration = Math.random() * 20 + 15;
             
-            // Разные типы частиц
             const types = ['gold', 'white', 'blue'];
             const type = types[Math.floor(Math.random() * types.length)];
             
@@ -77,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
             
-            // Устанавливаем стили
             particle.style.position = 'absolute';
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
@@ -89,13 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             particle.style.zIndex = '-1';
             particle.style.pointerEvents = 'none';
             
-            // Добавляем анимацию
             particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`;
             
             bg.appendChild(particle);
         }
         
-        // Добавляем стили для анимации если их нет
         if (!document.querySelector('#particle-animation')) {
             const style = document.createElement('style');
             style.id = 'particle-animation';
@@ -121,10 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Инициализация
     createParticles();
     
-    // Реинициализация при изменении размера окна
     let resizeTimeout;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
@@ -133,9 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
     
-    // Оптимизация для мобильных устройств
     if (window.innerWidth <= 768) {
-        // Уменьшаем количество частиц на мобильных
         const particles = document.querySelectorAll('.particle');
         for (let i = 20; i < particles.length; i++) {
             if (particles[i]) {
@@ -144,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Добавляем анимацию при загрузке
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';
