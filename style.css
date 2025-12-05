@@ -436,11 +436,11 @@ body {
 /* Эффект одеяния */
 .robe-effect {
     position: absolute;
-    bottom: -60px;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
-    height: 120px;
+    width: 250px;
+    height: 80px;
     background: linear-gradient(to bottom, rgba(255, 215, 0, 0.15), transparent);
     border-radius: 50%;
     filter: blur(30px);
@@ -459,8 +459,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    height: 350px;
     background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
